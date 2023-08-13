@@ -1,8 +1,7 @@
-import { LoadStrategy, defineConfig } from "@mikro-orm/core";
+import { LoadStrategy, defineConfig } from "@mikro-orm/postgresql";
 import config from "./../config";
 
 export default defineConfig({
-  type: "postgresql",
   host: config.host,
   port: config.port,
   user: config.user,
