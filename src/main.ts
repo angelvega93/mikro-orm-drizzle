@@ -1,4 +1,5 @@
 import { MikroORM } from "@mikro-orm/postgresql";
+import { desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import client from "./drizzle/client";
 import * as schema from "./drizzle/schema";
@@ -23,7 +24,7 @@ const main = async () => {
   console.time("DRIZZLE");
   for (let i = 0; i <= 100; i++) {
     await db.query.post.findMany({
-      with: { comments: { orderBy: schema.post.id }, category: true },
+      with: { comments: { orderBy: desc(schema.comment.id) }, category: true },
       limit: 20,
     });
   }
